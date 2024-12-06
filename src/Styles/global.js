@@ -34,6 +34,7 @@ export default createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     outline: none;
+    all: unset;
   }
 
   a {

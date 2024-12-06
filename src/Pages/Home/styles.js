@@ -133,7 +133,7 @@ export const Section = styled.div`
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 100px; /* Largura da faixa de esfumaçamento */
+    width: 150px; /* Largura da faixa de esfumaçamento */
     pointer-events: none; /* Não interfere na interação do usuário */
     z-index: 1;
   }
@@ -141,13 +141,13 @@ export const Section = styled.div`
   /* Esfumaçamento à esquerda */
   &::before {
     left: 0;
-    background: linear-gradient(to right, rgba(25, 34, 39, 1), transparent);
+    background: linear-gradient(to right, rgba(0, 7, 10, 1), transparent);
   }
 
   /* Esfumaçamento à direita */
   &::after {
     right: 0;
-    background: linear-gradient(to left, rgba(25, 34, 39, 1), transparent);
+    background: linear-gradient(to left, rgba(0, 7, 10, 1), transparent);
   }
 
   @media (max-width: 768px) {

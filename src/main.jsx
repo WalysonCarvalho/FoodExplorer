@@ -5,13 +5,13 @@ import theme from "./Styles/theme";
 import GlobalStyles from "./Styles/global";
 import { BrowserRouter } from "react-router-dom";
 
-import { Home } from "./Pages/Home";
+import { Dishes } from "./Components/Dishes";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter />
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Home />
+      <Dishes />
     </ThemeProvider>
   </React.StrictMode>
 );
