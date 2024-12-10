@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { FiMail, FiUser, FiLock,FiArrowLeft } from "react-icons/fi";
+import { FiMail, FiUser, FiLock, FiArrowLeft } from "react-icons/fi";
 import { BiSolidPolygon } from "react-icons/bi";
 
 /* import { useNavigate } from "react-router-dom";
  */
 import { api } from "../../Services/api";
 
-import { Container, Form, Section,Main } from "./styles";
+import { Container, Form, Section, Main } from "./styles";
 import { Input } from "../../Components/Input";
 import { Button } from "../../Components/Button";
+import { Link } from "react-router-dom";
 
 export function SignUp() {
   const [name, setName] = useState("");
@@ -21,7 +22,7 @@ export function SignUp() {
     if (!name || !email || !password) {
       return alert("Preencha todos os campos!");
     }
-  
+
     api
       .post("/users", { name, email, password })
       .then(() => {
@@ -36,52 +37,46 @@ export function SignUp() {
         }
       });
   }
-  
+
   return (
     <Container>
       <Main>
-       
-      </Main>
-      <Section>
-      <Form>
-   <h1>
+        <h1>
           <strong>
             <BiSolidPolygon />
           </strong>{" "}
           Food Explorer
-        </h1>      <h1>Crie a sua conta</h1>
-
-        <Input
-          placeholder="Nome"
-          type="text"
-          icon={FiUser}
-          onChange={e => setName(e.target.value)}
-        />
-
-        <Input
-          placeholder="E-mail"
-          type="text"
-          icon={FiMail}
-          onChange={e => setEmail(e.target.value)}
-        />
-
-        <Input
-          placeholder="Senha"
-          type="password"
-          icon={FiLock}
-          onChange={e => setPassword(e.target.value)}
-        />
-
-        <Button
-          
-          onClick={handleSignUp}
-        >Cadastrar</Button>
-
-        <a to="/">
-          <FiArrowLeft />
-          Já tenho uma conta
-        </a>
-      </Form>
+        </h1>{" "}
+      </Main>
+      <Section>
+        <Form>
+          <h1>Crie a sua conta</h1>
+          <Input
+            placeholder="Nome"
+            type="text"
+            icon={FiUser}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Input
+            placeholder="E-mail"
+            type="text"
+            icon={FiMail}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input
+            placeholder="Senha"
+            type="password"
+            icon={FiLock}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button title="Cadastrar" id="buttonSignUp" onClick={handleSignUp}>
+            Cadastrar
+          </Button>
+          <Link to="/">
+            <FiArrowLeft />
+            Já tenho uma conta
+          </Link>
+        </Form>
       </Section>
     </Container>
   );

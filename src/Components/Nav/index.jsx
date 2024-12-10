@@ -7,31 +7,36 @@ import { IoSearch } from "react-icons/io5";
 import { Button } from "../Button";
 import { RxExit } from "react-icons/rx";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 export function Nav() {
+  
+  const navigate = useNavigate();
   return (
     <Container>
       <Section>
         <NavMob>
           <div className="iconButton">
-            <a href="">
+            <Link to="/MenuMobile">
               <IoMdMenu size={34} />
-            </a>
+            </Link>
           </div>
-
+            
           <h1>
             <strong>
               <BiSolidPolygon />
             </strong>{" "}
-            Food Explorer
+            Food Explorer 
           </h1>
+          
           <div className="iconButton">
-            <a href="">
+            <Link to = "/menu">
               <BsBorderStyle size={34} />
               <div className="orders">
                 <span>0</span>
               </div>
-            </a>
+            </Link>
           </div>
         </NavMob>
       </Section>
@@ -48,12 +53,12 @@ export function Nav() {
             type="search"
             icon={IoSearch}
           />
-          <Button className="ButtonHeader">
+          <Button onClick = {()=> navigate("/menu")} className="ButtonHeader">
             <BsBorderStyle size={24} /> Pedidos <span>(0)</span>
           </Button>
-          <a href="">
+          <Link to ="/entrar">
             <RxExit size={54} />
-          </a>
+          </Link>
         </NavDesk>
       </Div>
     </Container>

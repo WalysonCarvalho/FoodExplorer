@@ -10,6 +10,8 @@ import { Button } from "../../Components/Button";
 import { BiSolidPolygon } from "react-icons/bi";
 import { FiMail, FiLock, FiUserPlus } from "react-icons/fi";
 
+import { Link } from "react-router-dom";
+
 
 
 export function SignIn() {
@@ -23,6 +25,26 @@ export function SignIn() {
 
     function handleSignIn() {
       window.location.reload();
+    }
+
+    function handleSignUp() {
+      if (!name || !email || !password) {
+        return alert("Preencha todos os campos!");
+      }
+  
+      api
+        .post("/users", { name, email, password })
+        .then(() => {
+          alert("Cadastro realizado com sucesso!");
+          // navigate("/"); // Comente ou remova esta linha para deixar estático
+        })
+        .catch((error) => {
+          if (error.response) {
+            alert(error.response.data.message);
+          } else {
+            alert("Não foi possível cadastrar.");
+          }
+        });
     }
   }
   return (
@@ -57,9 +79,9 @@ export function SignIn() {
             Entrar
           </Button>
 
-          <a onClick={() => window.location.reload()}>
+          <Link to="/register">
             <FiUserPlus /> Criar conta
-          </a>
+          </Link>
         </Form>
       </Section>
     </Container>

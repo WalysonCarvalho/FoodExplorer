@@ -1,68 +1,68 @@
 import React, { useState } from "react";
-import { Container, Section, Input } from "./styles";
+import { Container, Section, ImageWrapper, Content, Prices, Button, InputWrapper } from "./styles";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { FiMinus } from "react-icons/fi";
+import { FaPlus } from "react-icons/fa";
 import { BsBorderStyle } from "react-icons/bs";
-import { FaPlus } from "react-icons/fa6";
+import { Link} from  "react-router-dom"
 
-export function Dishes({
+export function Dishes ({
   dishName = "Prato Genérico",
   description = "Descrição padrão do prato.",
   placeholders = ["Ingrediente 1", "Ingrediente 2", "Ingrediente 3"],
-  image = "",
+  image = "https://via.placeholder.com/390",
 }) {
   const [quantity, setQuantity] = useState(0);
 
-  // Funções para alterar a quantidade
   const handleIncrease = () => setQuantity((prev) => prev + 1);
   const handleDecrease = () => setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
 
   return (
     <Container>
+      {/* Botão de voltar */}
+      <div className="back">
+        <Link to="/Home">
+          <IoMdArrowRoundBack /> Voltar
+        </Link>
+      </div>
+
+      {/* Área principal */}
       <Section>
-        {/* Botão de Voltar */}
-        <div className="back">
-          <a href="#">
-            <IoMdArrowRoundBack />
-            Voltar
-          </a>
-        </div>
-
         {/* Imagem do prato */}
-        <div className="img-food">
+        <ImageWrapper>
           <img src={image} alt={dishName} />
-        </div>
+        </ImageWrapper>
 
-        {/* Texto do prato */}
-        <div className="text">
+        {/* Conteúdo descritivo e interativo */}
+        <Content>
           <h1>{dishName}</h1>
           <p>{description}</p>
-        </div>
 
-        {/* Inputs dinâmicos */}
-        <Input>
-          {placeholders.map((placeholder, index) => (
-            <input key={index} type="text" placeholder={placeholder} />
-          ))}
-        </Input>
+          {/* Inputs dinâmicos */}
+          <InputWrapper>
+            {placeholders.map((placeholder, index) => (
+              <input key={index} type="text" placeholder={placeholder} />
+            ))}
+          </InputWrapper>
 
-        {/* Área de preços e contador */}
-        <div className="prices">
-          <div className="price">
-            <a href="#" onClick={handleDecrease}>
-              <FiMinus size={25} />
-            </a>
-            <span>({quantity})</span>
-            <a href="#" onClick={handleIncrease}>
-              <FaPlus size={25} />
-            </a>
-          </div>
-
-          {/* Botão de pedidos */}
-          <button>
-            <BsBorderStyle size={24} /> Pedidos <span>({quantity})</span>
-          </button>
-        </div>
+          {/* Área de controle de quantidade e botão */}
+          <Prices>
+            <div className="counter">
+              <a href="#" onClick={handleDecrease}>
+                <FiMinus size={25} />
+              </a>
+              <span>{quantity}</span>
+              <a href="#" onClick={handleIncrease}>
+                <FaPlus size={25} />
+              </a>
+            </div>
+            <Link to="/pagamento">
+            <Button>
+              <BsBorderStyle size={20} /> Pedidos <span>({quantity})</span>
+            </Button>
+            </Link>
+          </Prices>
+        </Content>
       </Section>
     </Container>
   );

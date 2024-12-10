@@ -1,13 +1,13 @@
 import { Container } from "./styles";
 import { Nav } from "../../Components/Nav";
 import { Footer } from "../../Components/Footer";
-
+import { Dishes } from "../../Components/Dishes";
 
 export function MenuItem() {
   return (
     <Container>
       <Nav />
-      <h1>MenuItem</h1>
+      <Dishes />
 
       <Footer />
     </Container>

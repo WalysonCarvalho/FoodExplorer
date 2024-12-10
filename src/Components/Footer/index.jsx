@@ -8,7 +8,7 @@ export function Footer() {
         <div className="footerOne">
           <p>
             <strong>
-              <BiSolidPolygon />
+              <BiSolidPolygon size={25}/>
             </strong>{" "}
             Food Explorer
           </p>

@@ -84,6 +84,25 @@ export const Form = styled.form`
     align-items: center;
     gap: 7px;
   }
+
+  /* >#buttonSignUp{
+    max-width:476px;
+  background-color: ${({ theme }) => theme.COLORS.TOMATO_100};
+  color: ${({ theme }) => theme.COLORS.WHITE};
+  font-size: 16px;
+  
+  height: 46px;
+  border: 0;
+  padding:  16px;  
+  border-radius: 7px;
+  font-weight: 700;
+  ;
+
+  &:disabled {
+    opacity: .5;
+  }
+ */
+ /*  } */
   @media (max-width: 768px) {
     background: none;
   }

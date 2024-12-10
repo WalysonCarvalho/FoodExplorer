@@ -25,6 +25,7 @@ const Desserts = [foto4, foto5, foto6, foto7];
 const Drinks = [foto8, foto9, foto10, foto11];
 
 export function Home() {
+  
   return (
     <Container>
       <Nav />

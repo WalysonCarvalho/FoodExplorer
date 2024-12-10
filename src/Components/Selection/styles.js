@@ -15,23 +15,23 @@ export const Article = styled.article`
   width: 224px;
   padding: 1rem;
   text-align: center;
-   /* Permite posicionar o coração no topo */
   overflow: hidden;
 
-  >.header {
-    >.heart-client {
-    display: flex;
-    justify-content: flex-end;
-    top: 16px;
-    right: 16px;
-    a {
+  > .header {
+    > .heart-client {
       display: flex;
       justify-content: flex-end;
-      font-size: 1.5rem;
-      color: ${({ theme }) => theme.COLORS.WHITE};;
-    }
-  }
+      top: 16px;
+      right: 16px;
 
+      a {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 1.5rem;
+        color: ${({ theme }) => theme.COLORS.WHITE};
+        text-decoration: none; /* Removemos o sublinhado */
+      }
+    }
   }
 
   > .imgs {
@@ -39,6 +39,7 @@ export const Article = styled.article`
     align-items: center;
     justify-content: center;
     padding: 1rem;
+
     img {
       width: 176px;
       height: 176px;
@@ -50,11 +51,13 @@ export const Article = styled.article`
     h1 {
       font-size: 1.5rem;
       font-weight: bold;
-      color:${({ theme }) => theme.COLORS.LIGHT_500};
+      color: ${({ theme }) => theme.COLORS.LIGHT_500};
     }
+
     p {
       font-size: 1rem;
       color: ${({ theme }) => theme.COLORS.LIGHT_500};
+
       @media (max-width: 768px) {
         display: none;
       }
@@ -63,6 +66,7 @@ export const Article = styled.article`
 
   > .clash {
     margin-top: 0.5rem;
+
     span {
       font-size: 1.25rem;
       font-weight: bold;
@@ -72,17 +76,37 @@ export const Article = styled.article`
 
   > .prices {
     display: flex;
+    flex-direction: column; /* Coluna para organizar melhor */
     align-items: center;
-    justify-content: center;
     margin-top: 1rem;
     gap: 0.5rem;
 
-    a {
-      display: flex;
+    > .quantity {
+      display: flex; /* Flexbox para os botões e o número ficarem na horizontal */
       align-items: center;
-      justify-content: space-between;
-      font-size: 1.25rem;
-      color: ${({ theme }) => theme.COLORS.WHITE};
+      justify-content: center;
+      gap: 16px; /* Gap de 16px entre os elementos */
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        color: ${({ theme }) => theme.COLORS.WHITE}; /* Cor branca */
+        cursor: pointer;
+        text-decoration: none; /* Removemos o sublinhado */
+        transition: color 0.2s;
+
+        &:hover {
+          color: ${({ theme }) => theme.COLORS.CAKE_200};
+        }
+      }
+
+      span {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: ${({ theme }) => theme.COLORS.WHITE}; /* Cor branca */
+      }
     }
 
     button {
@@ -101,3 +125,4 @@ export const Article = styled.article`
     }
   }
 `;
+

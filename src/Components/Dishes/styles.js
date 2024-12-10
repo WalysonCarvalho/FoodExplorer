@@ -2,140 +2,154 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
-  background: red;
-  max-width: 316px;
-  max-height: 677px;
-  margin: 0 auto;
-  
-`;
-export const Section = styled.section`
-  background: ${({ theme }) => theme.COLORS.DARK_200};
-  width: 100%;
-  display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
+  background: ${({ theme }) => theme.COLORS.DARK_200};
+  padding: 2rem;
+  margin: 0 auto;
 
-  > .prices {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1rem;
-    gap: 1rem;
-    margin-bottom: 3rem;
+  .back {
+    align-self: flex-start;
+    margin-bottom: 2rem;
 
-    > .price {
+    a {
+      text-decoration: none;
+      color: ${({ theme }) => theme.COLORS.WHITE};
+      font-size: 1.2rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-      gap: 10px;
-      font-size: 24px;
-
-      a {
-        text-decoration: none;
-        color: ${({ theme }) => theme.COLORS.WHITE};
-      }
-
-      span {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 8px;
-      }
-    }
-
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 158px;
-      max-width: 188px;
-      height: 36px;
-      padding: 10px 43px 10px 43px;
-      gap: 5px;
-
-      background: ${({ theme }) => theme.COLORS.TOMATO_100};
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s;
+      gap: 8px;
 
       &:hover {
-        background: #d62828;
+        color: ${({ theme }) => theme.COLORS.TOMATO_100};
       }
     }
   }
+`;
 
-  > .text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 16px;
-    text-align: center;
-    gap: 1rem;
+export const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    max-width: 1200px;
+    margin: 0 auto;
   }
+`;
 
-  > .back {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    font-size: 1.5rem;
-    padding-left: 25px;
-    margin-top: 2rem;
+export const ImageWrapper = styled.div`
+  img {
+    width: 264px;
+    height: 264px;
+    border-radius: 50%;
 
-    > a {
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-    }
-  }
-
-  > .img-food {
-    img {
-      width: 264px;
-      height: 264px;
-      margin: 16px 26px 16px;
-    }
-
-    > .ingredients {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+    @media (min-width: 768px) {
+      width: 390px;
+      height: 390px;
     }
   }
 `;
-export const Input = styled.div`
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  h1 {
+    font-size: 1.5rem;
+    color: ${({ theme }) => theme.COLORS.WHITE};
+    margin-bottom: 1rem;
+
+    @media (min-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
+    margin-bottom: 2rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.2rem;
+    }
+  }
+`;
+
+export const InputWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding: 1rem;
-  gap: 5px;
-  margin-bottom: 48p;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
 
-  > input {
-    display: flex;
-    background: #192227; /* Cor de fundo */
-    border: none; /* Remove a borda padrão */
-    border-radius: 5px; /* Bordas arredondadas */
-    color: white; /* Cor do texto */
-    font-size: 1rem; /* Tamanho da fonte */
-    padding: 3px; /* Espaçamento interno */
-    width: auto; /* Ajusta dinamicamente ao conteúdo */
-    max-width: 85px; /* Largura mínima */
-    text-align: center; /* Centraliza o texto */
+  input {
+    background: ${({ theme }) => theme.COLORS.DARK_1000};
+    color: ${({ theme }) => theme.COLORS.WHITE};
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem;
+    text-align: center;
+    width: 100px;
 
     &::placeholder {
-      color: white; /* Placeholder com cor branca */
+      color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
     }
+  }
+`;
+
+export const Prices = styled.div`
+  display: flex;
+
+  align-items: center;
+  gap: 1rem;
+
+  .counter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    a {
+      color: ${({ theme }) => theme.COLORS.WHITE};
+      text-decoration: none;
+      font-size: 1.5rem;
+
+      &:hover {
+        color: ${({ theme }) => theme.COLORS.TOMATO_100};
+      }
+    }
+
+    span {
+      font-size: 1.2rem;
+      color: ${({ theme }) => theme.COLORS.WHITE};
+    }
+  }
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+`;
+
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: ${({ theme }) => theme.COLORS.TOMATO_100};
+  color: ${({ theme }) => theme.COLORS.WHITE};
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background: ${({ theme }) => theme.COLORS.TOMATO_200};
   }
 `;

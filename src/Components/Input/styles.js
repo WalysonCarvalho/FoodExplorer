@@ -10,7 +10,8 @@ export const Container = styled.div`
   
   border-radius: 7px;
   
-  > input {
+  > input, 
+  >select {
     height: 46px;
     width: 100%;
 
@@ -20,6 +21,11 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.WHITE};
     background: transparent;
     border: 0;
+
+    >option{
+      background-color: ${({ theme }) => theme.COLORS.DARK_800};
+
+    }
 
     &::placeholder {
       color: ${({ theme }) => theme.COLORS.GRAY_600};

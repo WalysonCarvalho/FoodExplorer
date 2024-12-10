@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.button`
-  width: 100%;
+  
   max-width:476px;
   background-color: ${({ theme }) => theme.COLORS.TOMATO_100};
   color: ${({ theme }) => theme.COLORS.WHITE};
@@ -12,6 +12,9 @@ export const Container = styled.button`
   padding: 0 16px;  
   border-radius: 7px;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:disabled {
     opacity: .5;
