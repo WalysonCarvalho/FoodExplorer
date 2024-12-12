@@ -8,10 +8,27 @@ import { Button } from "../Button";
 import { RxExit } from "react-icons/rx";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useOrder } from "../../utils";
 
 export function Nav() {
-  
+  const { orderCount } = useOrder();
+  const { orders } = useOrder(); 
+
+
+  const verifyZero = () => {
+    if (orderCount === 0) {
+      alert("Por Favor, selecione uma opção.");
+      return false;
+    }
+    return true;
+  };
+
+  const handleButtonClick = () => {
+    if (verifyZero()) {
+      navigate("/menu"); // Navega para a página de menu se a quantidade for maior que 0
+    }
+  };
   const navigate = useNavigate();
   return (
     <Container>
@@ -22,19 +39,27 @@ export function Nav() {
               <IoMdMenu size={34} />
             </Link>
           </div>
-            
+
           <h1>
             <strong>
               <BiSolidPolygon />
             </strong>{" "}
-            Food Explorer 
+            Food Explorer
           </h1>
-          
+
           <div className="iconButton">
-            <Link to = "/menu">
+            <Link
+              to="/menu"
+              onClick={(e) => {
+                
+                if (orderCount === 0) {
+                  e.preventDefault(); 
+                  alert("Por Favor, selecione um prato.");
+                }
+              }}>
               <BsBorderStyle size={34} />
               <div className="orders">
-                <span>0</span>
+                <span>{orderCount}</span>
               </div>
             </Link>
           </div>
@@ -53,10 +78,10 @@ export function Nav() {
             type="search"
             icon={IoSearch}
           />
-          <Button onClick = {()=> navigate("/menu")} className="ButtonHeader">
-            <BsBorderStyle size={24} /> Pedidos <span>(0)</span>
+          <Button onClick={handleButtonClick} className="ButtonHeader">
+            <BsBorderStyle size={24} /> Pedidos <span>({orderCount})</span>
           </Button>
-          <Link to ="/entrar">
+          <Link to="/entrar">
             <RxExit size={54} />
           </Link>
         </NavDesk>

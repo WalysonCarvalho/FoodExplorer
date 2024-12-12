@@ -29,6 +29,9 @@ export function MenuMob() {
         <div className="text">
           <a href=""><span>Novos pratos</span></a>
         </div>
+        <div className="text">
+          <Link to ="/SignIn"><span>Meus Favoritos</span></Link>
+        </div>
 
         <div className="text">
           <Link to ="/SignIn"><span>Sair</span></Link>

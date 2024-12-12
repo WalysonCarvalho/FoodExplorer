@@ -25,7 +25,6 @@ export const Main = styled.main`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
   color: red;
 
   > h1 {

@@ -72,8 +72,8 @@ export const Header = styled.header`
 export const Main = styled.div`
   width: 100%;
   max-width: 372px;
-  height: 600px;
-  max-height: 677px;
+  height: 100vh;
+  max-height: 670px;
   background: ${({ theme }) => theme.COLORS.DARK_100};
 
   justify-content: center;

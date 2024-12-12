@@ -1,21 +1,31 @@
 import React, { useState } from "react";
-import { Container, Section, ImageWrapper, Content, Prices, Button, InputWrapper } from "./styles";
+import {
+  Container,
+  Section,
+  ImageWrapper,
+  Content,
+  Prices,
+  Button,
+  InputWrapper,
+} from "./styles";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { FiMinus } from "react-icons/fi";
 import { FaPlus } from "react-icons/fa";
 import { BsBorderStyle } from "react-icons/bs";
-import { Link} from  "react-router-dom"
+import { Link } from "react-router-dom";
 
-export function Dishes ({
-  dishName = "Prato Genérico",
-  description = "Descrição padrão do prato.",
-  placeholders = ["Ingrediente 1", "Ingrediente 2", "Ingrediente 3"],
-  image = "https://via.placeholder.com/390",
-}) {
+import { useOrder } from "../../utils";
+
+export function Dishes() {
   const [quantity, setQuantity] = useState(0);
+  const { setOrderCount } = useOrder();
+  const { orders } = useOrder(); // Obtendo os pedidos do contexto
+
 
   const handleIncrease = () => setQuantity((prev) => prev + 1);
   const handleDecrease = () => setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
+
+  
 
   return (
     <Container>
@@ -27,22 +37,23 @@ export function Dishes ({
       </div>
 
       {/* Área principal */}
-      <Section>
+      {orders.map((order, index) => (
+      <Section key={index}>
         {/* Imagem do prato */}
         <ImageWrapper>
-          <img src={image} alt={dishName} />
+          <img src={order.image} alt={order.dishName} />
         </ImageWrapper>
 
         {/* Conteúdo descritivo e interativo */}
         <Content>
-          <h1>{dishName}</h1>
-          <p>{description}</p>
+          <h1>{order.title}</h1>
+          <p>{order.description}</p>
 
           {/* Inputs dinâmicos */}
           <InputWrapper>
-            {placeholders.map((placeholder, index) => (
-              <input key={index} type="text" placeholder={placeholder} />
-            ))}
+            
+              <input type="text" placeholder={order.placeholder} />
+            
           </InputWrapper>
 
           {/* Área de controle de quantidade e botão */}
@@ -57,13 +68,19 @@ export function Dishes ({
               </a>
             </div>
             <Link to="/pagamento">
-            <Button>
-              <BsBorderStyle size={20} /> Pedidos <span>({quantity})</span>
-            </Button>
+              <Button onClick={setOrderCount}>
+                <BsBorderStyle size={20} /> Pedir<span>({order.price})</span>
+              </Button>
             </Link>
           </Prices>
         </Content>
       </Section>
+    ))}
     </Container>
   );
 }
+
+
+
+
+

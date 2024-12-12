@@ -88,6 +88,7 @@ export function Home() {
               title="Salada Ravanello"
               description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
               price="R$49,90"
+              
             />
           </motion.div>
         </Section>

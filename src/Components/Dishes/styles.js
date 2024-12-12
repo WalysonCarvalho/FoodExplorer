@@ -8,6 +8,9 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.COLORS.DARK_200};
   padding: 2rem;
   margin: 0 auto;
+  height: 100%;
+  gap: 2rem;
+  width: 100%;
 
   .back {
     align-self: flex-start;
@@ -36,7 +39,7 @@ export const Section = styled.div`
 
   @media (min-width: 768px) {
     flex-direction: row;
-    max-width: 1200px;
+    max-width:930px;
     margin: 0 auto;
   }
 `;
@@ -104,7 +107,6 @@ export const InputWrapper = styled.div`
 
 export const Prices = styled.div`
   display: flex;
-
   align-items: center;
   gap: 1rem;
 
